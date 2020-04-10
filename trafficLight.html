@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+
+<html>
+<title>Traffic-light</title>
+
+<head>
+   <link rel="stylesheet" type="text/css" href="trafficLight.css">
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+</head>
+
+<body>
+   
+   <!-----------------------------------------
+   -------------------------------------------
+   ------ Component 1 (design of roads)-------
+   -------------------------------------------
+   ------------------------------------------>
+   
+   <div class="mainContainer">
+      
+      <!--leftTop light (light sequence _ 1)-->
+      <div class="leftTop">
+         <div class="container">
+            <div class="circles1" id="redLeftTop" onclick="red_north_south_manual()"></div>
+            <div class="circles1" id="yellowLeftTop" onclick="yellow_north_south_manual()"></div>
+            <div class="circles1" id="greenLeftTop" onclick="green_north_south_manual()"></div>
+         </div>
+      </div>
+      
+      <!--rightTop light (light sequence _ 4)-->
+      <div class="rightTop">
+         <div class="container-two">
+            <div class="circles2" id="redRightTop" onclick="red_east_west_manual()"></div>
+            <div class="circles2" id="yellowRightTop" onclick="yellow_east_west_manual()"></div>
+            <div class="circles2" id="greenRightTop" onclick="green_east_west_manual()"></div>
+         </div>
+      </div>
+      
+      <!--dividers horizontal-->
+         <p class="leftRoad_GoLane" id="leftRoad_GoLane"></p>
+      <div class="horizontalLine"></div>
+         <p class="rightRoad_GoLane" id="rightRoad_GoLane"></p>
+      
+      <!--dividers vertical-->
+         <p class="bottomRoad_GoLane" id="bottomRoad_GoLane"></p>
+      <div class="verticalLine"></div>
+         <p class="topRoad_GoLane" id="topRoad_GoLane"></p>
+      
+      <!--leftBottom light (light sequence _ 3)-->
+      <div class="leftBottom">
+         <div class="container-three">
+            <div class="circles3" id="redLeftBottom" onclick="red_east_west_manual()"></div>
+            <div class="circles3" id="yellowLeftBottom" onclick="yellow_east_west_manual()"></div>
+            <div class="circles3" id="greenLeftBottom" onclick="green_east_west_manual()"></div>
+         </div>
+      </div>
+      
+      <!--rightBottom light (light sequence _ 2)-->
+      <div class="rightBottom">
+         <div class="container-four">
+            <div class="circles4" id="redRightBottom" onclick="red_north_south_manual()"></div>
+            <div class="circles4" id="yellowRightBottom" onclick="yellow_north_south_manual()"></div>
+            <div class="circles4" id="greenRightBottom" onclick="green_north_south_manual()"></div>
+         </div>
+      </div>
+   </div>
+   
+   <!-----------------------------------------
+   -------------------------------------------
+   ------ Component 2 (controler section)-----
+   -------------------------------------------
+   ------------------------------------------>
+   
+   <div class="controls">
+      <fieldset>
+         <legend>Select Mode</legend>
+         <h3>Select Mode</h3>
+         <div class="controlsSub1">
+            
+            <!--manual radio button-->
+            <label class="cont">Manual
+               <input type="radio" name="mode" value="manual" id="manual" onchange="manual_change()">
+               <span class="checkmark"></span>
+            </label>
+         </div>
+         <div class="controlsSub2">
+            
+            <!--timeBased radio button-->
+            <label class="cont">Time-based
+               <input type="radio" name="mode" value="timeBased" id="timeBased" onchange="time_based_change()">
+               <span class="checkmark"></span>
+            </label>
+            
+            <!--manual start-stop button-->
+            <div class="buttons">
+               <input type="button" name="start" value="Start" onclick="start_timeBased()" class="start" />
+               <input type="button" name="stop" value="Stop" onclick="stop_timeBased()" class="stop" />
+            </div>
+            
+            <!--table of custom time for timeBased mode-->
+            <table>
+               <tr>
+                  <th>North & South group</th>
+                  <th>East & West group</th>
+               </tr>
+               <tr>
+                  <td>Red &nbsp;&nbsp;&nbsp;&nbsp; <input type="number" id="redNS" class="tableText" disabled/></td>
+                  <td>Red &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="number" id="redEW" class="tableText" disabled/></td>
+               </tr>
+               <tr>
+                  <td>Yellow &nbsp;&nbsp;<input type="number" id="yellowNS" class="tableText" onkeyup="sync_time()" disabled/></td>
+                  <td>Yellow &nbsp;&nbsp;<input type="number" id="yellowEW" class="tableText" disabled/></td>
+               </tr>
+               <tr>
+                  <td>Green &nbsp;&nbsp;&nbsp;<input type="number" id="greenNS" class="tableText" onkeyup="sync_time()" disabled/></td>
+                  <td>Green &nbsp;&nbsp;&nbsp;<input type="number" id="greenEW" class="tableText" disabled/></td>
+               </tr>
+            </table>
+         </div>
+      </fieldset>
+   </div>
+   <div id="snackbar"></div>
+   <script type="text/javascript" src="myjavascript.js"></script>
+</body>
+
+</html>
